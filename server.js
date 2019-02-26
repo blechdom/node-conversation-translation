@@ -46,8 +46,10 @@ const ttsClient = new textToSpeech.TextToSpeechClient();
 var voiceList = {};
 
 async function doGetVoiceList(call, callback) {
+  console.log("getting voice list");
   const [result] = await ttsClient.listVoices({});
   voiceList = result.voices;
+  console.log("result: " + JSON.strigify(result));
   voiceList.sort(function(a, b) {
     var textA = a.name.toUpperCase();
     var textB = b.name.toUpperCase();
@@ -276,6 +278,7 @@ function doLeaveChat(call, callback) {
 
 function getServer() {
   var server = new grpc.Server();
+  console.log("getting server");
   server.addService(translate_chat.TranslateChat.service, {
     getVoiceList: doGetVoiceList,
     joinChat: doJoinChat,
