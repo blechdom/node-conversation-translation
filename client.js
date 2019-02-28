@@ -11,6 +11,8 @@ window.onload = function(){
   var startStreamingButton = document.getElementById('start-streaming');
   var microphoneIcon = document.getElementById('microphone-icon');
   var voiceListSelect = document.getElementById("voice-list-select-div");
+  var joinBottomDiv = document.getElementById("join-bottom-div");
+
   var languageName = '';
   var joinBool = true;
   var audioObject = {};
@@ -21,6 +23,7 @@ window.onload = function(){
 
   chatDiv.style.visibility = "hidden";
   joinDiv.style.visibility = "visible";
+  joinBottomDiv.style.visibility = "hidden";
 
   var receiverID = '';
   var usernames = [];
@@ -44,9 +47,9 @@ window.onload = function(){
           StopStreamResponse,
           VoiceListRequest,
           VoiceListResponse
-        } = require('./translate_chat_pb.js');
+        } = require('./conversation_translation_pb.js');
 
-  const {TranslateChatClient} = require('./translate_chat_grpc_web_pb.js');
+  const {TranslateChatClient} = require('./conversation_translation_grpc_web_pb.js');
 
   var client = new TranslateChatClient('http://' + window.location.hostname + ':8080', null, null);
 
@@ -75,6 +78,7 @@ window.onload = function(){
 
     }
     voiceListSelect.innerHTML = '<select class="shadow-sm form-control" id="LanguageVoiceSelect">' + voiceListOptions + '</select>';
+    joinBottomDiv.style.visibility = "visible";
   });
 
   joinButton.onclick = function(){
@@ -154,10 +158,12 @@ window.onload = function(){
         joinButton.click();
       }
       else {
-        messageSend.click();
+      //  messageSend.click();
       }
     }
   });
+
+
   messageSend.onclick = function() {
     if(messageInput.value){
       var request = new SendMessageRequest();
@@ -171,7 +177,7 @@ window.onload = function(){
       concatText = '';
       newText = '';
       messageInput.value = '';
-      if (recordingStatus) { stopStreaming(); }
+      //if (recordingStatus) { stopStreaming(); }
     }
     else {
       alert("no message input");
@@ -218,6 +224,7 @@ window.onload = function(){
       newText = response.getTranscript();
       messageInput.value = concatText + newText;
       if (response.getIsfinal()){
+        messageSend.click();
         concatText += " " + newText;
       }
       newText = '';

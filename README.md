@@ -1,9 +1,9 @@
 
 <img src="https://avatars2.githubusercontent.com/u/2810941?v=3&s=96" alt="Google Cloud Platform logo" title="Google Cloud Platform" align="right" height="96" width="96"/>
 
-# Google Cloud gRPC Node Speech Text-To-Speech Translation Tutorial Tutorial
+# Google Cloud AI Node/gRPC-web Speech and Text-To-Speech Translation Tutorial
 
-This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you how to build a simple web app using gRPC to communicate between a HTTP/javascript client and nodejs server, in order to perform real-time microphone transcription from the browser.
+This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you how to build a web app using gRPC to communicate between a HTTP/javascript client and a nodejs server, in order to perform real-time microphone translation between two or more clients using the WebAudioAPI in their browsers.
 
 ## To run the example app
 
@@ -28,17 +28,17 @@ This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you
 
 1.  Build Docker Envoy Proxy
 
-        docker build -t node-grpc-web/envoy -f ./envoy.Dockerfile .
+        docker build -t node-conversation-translation/envoy -f ./envoy.Dockerfile .
 
 1.  Run Envoy Proxy.
 
     on Mac:
 
-        docker run -d -p 8080:8080 node-grpc-web/envoy
+        docker run -d -p 8080:8080 node-conversation-translation/envoy
 
     on Windows/Linux:
 
-        docker run -d -p 8080:8080 --network=host node-grpc-web/envoy
+        docker run -d -p 8080:8080 --network=host node-conversation-translation/envoy
 
 1.  Install node packages.
 
@@ -72,11 +72,14 @@ This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you
 
 *   If you edit cloud_speech_web.proto file, you will need to recompile it using protoc
 
-        protoc -I=. cloud_speech_web.proto \ --js_out=import_style=commonjs:. \ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+        protoc -I=. conversation_translation.proto \
+          --js_out=import_style=commonjs:. \
+          --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
 
     * Protoc will generate two files
         * cloud_speech_web_grpc_web_pb.js
         * cloud_speech_web_pb.js files
+
     * Since client.js includes these files, you will need to recompile with Webpack
 
             npm run build

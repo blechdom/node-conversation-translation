@@ -4,7 +4,7 @@ class MessageEmitter extends EventEmitter {}
 const messageEmitter = new MessageEmitter();
 const userListEmitter = new MessageEmitter();
 
-var PROTO_PATH = __dirname + '/translate_chat.proto';
+var PROTO_PATH = __dirname + '/conversation_translation.proto';
 
 const io = require("socket.io");
 const SocketServer = io.listen(8082);

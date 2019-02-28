@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    <div class="row justify-content-md-center p-4"><h2>gRPC-web Translation Chat</h2></div>
+    <div class="row justify-content-md-center p-4"><h2>Conversation Translation</h2></div>
     <div id="join-div"><div class="p-4">
       <div class="row justify-content-md-center">
         <h5>Username</h5>
@@ -23,15 +23,17 @@
           <input type="text" class="write_msg form-control" placeholder="Enter Username" id="username-input"/>
         </div>
       </div>
-      <div class="row justify-content-md-center">
-        <h5>Select Your Language and Voice</h5>
-      </div>
-      <div class="row justify-content-md-center">
-        <div class="form-group" id="voice-list-select-div"></div>
-      </div>
-      <div class="form-group row justify-content-md-center">
-        <div class="col-xs-3">
-          <button class="btn btn-info" style="background-color: DodgerBlue;" type="button" id="join-btn">Join Chat</button>
+      <div id='join-bottom-div'>
+        <div class="row justify-content-md-center">
+          <h5>Select Your Language and Voice</h5>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="form-group" id="voice-list-select-div"></div>
+        </div>
+        <div class="form-group row justify-content-md-center">
+          <div class="col-xs-3">
+            <button class="btn btn-info" style="background-color: DodgerBlue;" type="button" id="join-btn">Join Chat</button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,26 +61,6 @@
               <button class="btn btn-outline-secondary" type="button" id="message-send" ><i class="fas fa-paper-plane"></i></button>
             </div>
           </div>
-      	  <!--<div class="type_msg form-inline">
-            <div class="form-inline">
-              <div>
-                <button type="button" class="btn" style="font-size: 30px;" id="start-streaming">
-                  <span style="color:DodgerBlue;" class="start_streaming_btn" id="microphone-icon">
-                    <i class="fas fa-microphone"></i>
-                  </span>
-                </button>
-              </div>
-          		<div class="input_msg_write">
-          		  <input type="text" class="write_msg" placeholder="Type a message" id="message-input" />
-              </div>
-            </div>
-            <div>
-              <button type="button" class="msg_send_btn" id="message-send">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </div>
-        	</div> -->
-
       </div>
     </div>
 
