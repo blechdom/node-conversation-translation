@@ -11,7 +11,9 @@ This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you
 
 1.  [Set up your node.js development environment][npm/NodeJS] .
 
-1.  [Install protoc][grpc].
+1.  [Install protoc][protoc]. Make sure it is in your PATH.
+
+1.  [Install protoc-gen-grpc-web][protoc-gen-grpc-web]. Make sure it is in your PATH.
 
 1.  [Select or create a Cloud Platform project][projects].
 
@@ -99,6 +101,8 @@ This [Cloud Speech API](https://cloud.google.com/speech/docs) Tutorial shows you
 [docker]: https://www.docker.com/products/docker-desktop
 [npm/NodeJS]: https://cloud.google.com/nodejs/docs/setup
 [grpc]:  https://grpc.io/docs/quickstart/go.html
+[protoc]: https://github.com/protocolbuffers/protobuf/releases
+[protoc-gen-grpc-web]: https://github.com/grpc/grpc-web/releases
 [client-docs]: https://cloud.google.com/nodejs/docs/reference/speech/latest/
 [product-docs]: https://cloud.google.com/speech/docs
 [shell_img]: https://gstatic.com/cloudssh/images/open-btn.png
