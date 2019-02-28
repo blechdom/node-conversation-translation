@@ -46,10 +46,10 @@ const ttsClient = new textToSpeech.TextToSpeechClient();
 var voiceList = {};
 
 async function doGetVoiceList(call, callback) {
-  console.log("getting voice list");
+  //console.log("getting voice list");
   const [result] = await ttsClient.listVoices({});
   voiceList = result.voices;
-  console.log("result: " + JSON.strigify(result));
+  //console.log("result: " + JSON.stringify(result));
   voiceList.sort(function(a, b) {
     var textA = a.name.toUpperCase();
     var textB = b.name.toUpperCase();
@@ -71,7 +71,7 @@ async function doJoinChat(call) {
   });
 
   var joinMessage = {
-    message: username + " joined the chat",
+    message: username + " joined the conversation",
     messageID: requestID[0],
     messageLangCode: 'en',
     senderID: requestID[0],
@@ -79,7 +79,7 @@ async function doJoinChat(call) {
     messageType: "update"
   };
 
-  console.log(username + " joined the chatroom with ID: " + requestID[0]);
+  console.log(username + " joined the conversation with ID: " + requestID[0]);
 
   console.log("number joined: " + user_array.length);
 
@@ -259,7 +259,7 @@ function doLeaveChat(call, callback) {
         break;
     }
   }
-  var leaveMessage = username + " has left the chat.";
+  var leaveMessage = username + " has left the conversation.";
   var chatMessage = {
     message: leaveMessage,
     messageID: senderID,

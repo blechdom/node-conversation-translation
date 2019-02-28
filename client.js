@@ -54,12 +54,12 @@ window.onload = function(){
   var client = new TranslateChatClient('http://' + window.location.hostname + ':8080', null, null);
 
   var voiceListRequest = new VoiceListRequest();
-  console.log("voice list request: " + JSON.stringify(voiceListRequest));
   voiceListRequest.setLoaded(true);
 
   client.getVoiceList(voiceListRequest, {}, (err, response) => {
-    console.log("getting voice list");
+    
     var voicelist = JSON.parse(response.getVoicelist());
+
     var voiceListOptions = '';
 
     for (var i=0; i<voicelist.length; i++) {
